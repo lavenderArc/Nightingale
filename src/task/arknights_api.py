@@ -23,6 +23,7 @@ class ArknightsTask(Task):
     START_OPERATION_RUN = "start_operation_run"
 
     def __init__(self, **kwargs):
+        super(ArknightsTask, self).__init__()
         self.__pics = kwargs.get("pics") or []
         self.__pic_dir = kwargs.get("pic_dir")
         self.__pic_sets = []

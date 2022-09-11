@@ -14,7 +14,7 @@ log = get_log()
 
 
 class Task:
-    def __int__(self):
+    def __init__(self):
         self.screen_size = pyautogui.size()
         self.screen_center = GeoUtils.size_center(self.screen_size)
 
