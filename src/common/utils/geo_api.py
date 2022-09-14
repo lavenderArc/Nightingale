@@ -5,6 +5,8 @@
 # Function: GeoUtils
 import random
 
+from src.common.definition import BufferRegion, BufferRegionRect
+
 
 class GeoUtils:
     @staticmethod
@@ -37,5 +39,9 @@ class GeoUtils:
         :param buffer: random buffer
         :return: random position, random value
         """
-        width_random, height_random = random.randint(-buffer[0], buffer[0]), random.randint(-buffer[1], buffer[1])
-        return (pos[0] + width_random, pos[1] + height_random), (width_random, height_random)
+        if isinstance(buffer, BufferRegion):
+            width_random, height_random = random.randint(buffer[0], buffer[1]), random.randint(buffer[2], buffer[3])
+            return (pos[0] + width_random, pos[1] + height_random), (width_random, height_random)
+        elif isinstance(buffer, BufferRegionRect):
+            width_random, height_random = random.randint(-buffer[0], buffer[0]), random.randint(-buffer[1], buffer[1])
+            return (pos[0] + width_random, pos[1] + height_random), (width_random, height_random)

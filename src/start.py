@@ -6,7 +6,7 @@
 import os
 import sys
 
-from src.task.arknights_api import ArknightsTask
+from src.task.arknights_api import ArknightsHandler
 from src.common.log.logger import get_log
 
 log = get_log()
@@ -17,9 +17,6 @@ if __name__ == '__main__':
         "pic_dir": os.path.join(run_path, "assets", "daily")
     }
 
-    task = ArknightsTask(**example)
-    try:
-        log.info("start...")
-        task.start()
-    except Exception as e:
-        print(e)
+    task = ArknightsHandler(**example)
+    fp_arknights = r'C:\Users\lijianye\Code\Nightingale\src\config\arknights.yaml'
+    task.start_daily(fp_arknights)
