@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # coding=utf-8
-# Copyright (C) 2022-2022, Inc. All Rights Reserved 
+# Copyright (C) 2022-2022, Inc. All Rights Reserved
 #
 # Function: base_window
 import os.path
@@ -18,13 +18,13 @@ log = get_log()
 stat_log = get_log('statistic')
 
 
-# 计算执行时间的装饰器，传入参数为装饰的函数或方法
 def statistic(func):
+    """计算执行时间的装饰器，传入参数为装饰的函数或方法"""
     def wrapper(*args, **kwargs):
         start = time.time()
         res = func(*args, **kwargs)
         end = time.time()
-        stat_log.info(f'{func.__name__}() execute time: {end - start}s')
+        stat_log.info('%s() execute time: %ds' % (func.__name__, end - start))
         return res
 
     return wrapper

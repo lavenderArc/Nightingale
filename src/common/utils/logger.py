@@ -11,11 +11,11 @@ formatter = logging.Formatter(log_fmt)
 logging.basicConfig(level=logging.INFO, format=log_fmt)
 
 
-def get_log(name='root'):
+def get_log(name='run'):
     __logger = logging.getLogger(name)
+    __logger.setLevel(level=logging.DEBUG)
 
     if len(__logger.handlers) == 0:
-        __logger.setLevel(level=logging.DEBUG)
 
         # log file handler
         fp_log = __file__.split('src')[0] + name + ".log"

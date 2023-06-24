@@ -152,3 +152,17 @@ def find_window(window_exec: WindowExec):
 def send_enter_to_window(hwnd, vk=win32con.VK_RETURN):
     win32api.PostMessage(hwnd, win32con.WM_KEYDOWN, vk, 0)
     win32api.PostMessage(hwnd, win32con.WM_KEYUP, vk, 0)
+
+
+def scroll_wheel(hwnd, wparam, lparam):
+    win32api.PostMessage(hwnd, win32con.WM_MOUSEWHEEL, wparam, lparam)
+
+
+def wheel_up(pos):
+    win32api.mouse_event(win32con.MOUSEEVENTF_WHEEL, pos.x, pos.y, 1, 0)
+
+
+if __name__ == '__main__':
+    monitor_num = win32api.GetSystemMetrics(win32con.SM_CMONITORS)
+    print(monitor_num)
+    pass
